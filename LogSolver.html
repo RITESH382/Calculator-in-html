@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Logarithm Solver</title>
+    <style>
+        body{
+            background-color: black;
+            color: white;
+            text-align: center;
+        }
+        .log-frame {
+            margin: auto;
+            top: 35%;
+            width: 100%;
+            height: 40%;
+            font-size: 10vw;
+            text-align: center;
+            position: fixed;
+        }
+        input[type="number"]{
+            width: 15vw;
+            height: 5vw;
+            font-size: 3vw;
+            text-align: center;
+        }
+        #output{
+            width: auto;
+            height: 5vw;
+            font-size: 3vw;
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+    <h1 style="font-size: 10vw;color: chartreuse;">Logarithm Solver</h1>
+    <div class="log-frame">
+        Log
+        <sub><sub><sub><input type="number" id="base" value="10" oninput="solve()" min="0"></sub></sub></sub>
+        <input type="number" id="nm" value="10" oninput="solve()" min="0"><br>  
+        <input type="text" id="output" value="1" readonly>
+    </div>
+    <script>
+        function solve() {
+            var nm = document.getElementById('nm');
+            var bs = document.getElementById('base');
+            var ans = Math.log(nm.value) / Math.log(bs.value);
+            var output = document.getElementById('output');
+            output.value = parseFloat(ans.toFixed(14));
+            if(nm.value < 0 || bs.value < 0){
+                alert("Argument or Base can't be Negative!")
+                output.value = 1;
+                nm.value = 10;
+                bs.value = 10
+            }else if(nm.value == 0 && bs.value == 0){
+                alert("Argument and Base both can't be 0");
+                output.value = 1;
+                bs.value = 10;
+                nm.value = 10;
+            }else if(nm.value == 1 && bs.value == 1){
+                alert("Argument and Base both can't be 1");
+                output.value = 1;
+                bs.value = 10;
+                nm.value = 10;           
+            }
+            
+        }
+    </script>
+</body>
+
+</html>
